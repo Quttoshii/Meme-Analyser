@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+    box-sizing: border-box;
+    font-family:"Montserrat", sans-serif;
+    color: rgba(255, 255, 255, 0.904);
+}
+
+.main
+{
+    width: 100ch;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0, 0.7)),url({{url_for('static', filename='background.jpg')}});
+    background-size: cover;
+}
+
+.content
+{
+    position: relative;
+    top: 20%;
+    left: 32.5%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    align-items: center;
+}
+
+.btn-warning
+{
+    position:relative;
+    left: 42.5%;
+    top: 50%;
+    padding:11px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    background-color:aquamarine;
+    border: 0;
+    overflow:hidden;
+    transition: .2s;
+    position: absolute;
+    margin: auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.btn-warning input[type="file"]
+{
+    cursor:pointer;
+    position:absolute;
+    left: 0%;
+    top: 0%;
+    transform:scale(6);
+    opacity: 0;
+}
+
+.btn-warning:hover
+{
+    background: rgb(0, 173, 116);
+}
+
+.sub
+{
+    position:relative;
+    left: 61%;
+    top: 50%;
+    padding:20px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    background-color:aquamarine;
+    border: 0;
+    overflow:hidden;
+    transition: .2s;
+    position: absolute;
+    margin: auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.sub input[type="submit"]
+{
+    cursor: pointer;
+    position:absolute;
+    left: 0%;
+    top: 0%;
+    transform:scale(6);
+    opacity: 0;
+}
+
+.sub:hover
+{
+    background: rgb(0, 173, 116);
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>Meme Analyzer | Home</title>
+    <link rel="stylesheet">
+</head>
+<body class="main">
+    <div class="content">
+        <h1>Meme Analyzer</h1>
+        <br><br>
+        <h5>by Afaq Alam</h5>
+    </div>
+    <div class ="upload">
+        <form method = "POST", enctype="multipart/form-data">
+            <button type = "button" class="btn-warning">
+                <img src="{{url_for('static', filename='addBox.png')}}">
+                Choose an Image
+                <input type="file" name="picture">
+            </button>
+            <input type="submit" class="sub">
+        </form>
+    </div>
+    <div class = "display">
+        {% if result == 0 %}
+            <p>Your Meme is Very Negative</p>
+        {% elif result == 1 %}
+            <p>Your Meme is Negative</p>
+        {% elif result == 2 %}
+            <p>Your Meme is Neutral</p>
+        {% elif result == 3 %}
+            <p>Your Meme is Positive</p>
+        {% elif result == 4 %}
+            <p>Your Meme is Very Positive</p>
+        {% endif %}
+    </div>
+</body>
+</html>
